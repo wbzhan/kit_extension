@@ -24,10 +24,11 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/zhanwenbaoit@126.com/kit_extension'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'zhanwenbaoit@126.com' => 'wbzhan@yeah.net' }
-  s.source           = { :git => 'https://github.com/zhanwenbaoit@126.com/kit_extension.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/wbzhan/kit_extension.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.swift_version = "5.0"
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'kit_extension/Classes/**/*'
   
