@@ -22,9 +22,8 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/zhanwenbaoit@126.com/kit_extension'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'zhanwenbaoit@126.com' => 'wenbao.zhan@vantopgroup.com' }
+  s.author           = { 'zhanwenbaoit@126.com' => 'wbzhan@yeah.net' }
   s.source           = { :git => 'https://github.com/zhanwenbaoit@126.com/kit_extension.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

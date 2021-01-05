@@ -1,0 +1,16 @@
+PODS:
+  - kit_extension (0.1.0)
+
+DEPENDENCIES:
+  - kit_extension (from `../`)
+
+EXTERNAL SOURCES:
+  kit_extension:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  kit_extension: a8d1729349a784a3c5c9994c1ac525471b4a284c
+
+PODFILE CHECKSUM: 0cc457885e1baf08a6351751028670897463af6b
+
+COCOAPODS: 1.10.0
