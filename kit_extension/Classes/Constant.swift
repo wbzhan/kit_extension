@@ -34,6 +34,18 @@ public let kOne_px = 1 / kMainScale
 public let kZeroHeight = CGFloat(0.000001)
 
 
+public let kServer = "server"
+
+public let kImageDomin = "imageDomin"
+
+public let APP_Domin = (UserDefaults.standard.object(forKey: kServer) ?? "" ) as? String ?? ""
+//网络图前置地址
+public let APP_image_Domin = (UserDefaults.standard.object(forKey: kImageDomin) ?? "") as? String ?? ""
+//白色背景
+public let kWhiteColor = UIColor.colorSrting("#FFFFFF")
+
+public let kPlaceHolderImage = UIImage.init(named: "placeHolderImage")
+
 //MARK:  --  System INFO
 ///APP  version
 public let kAppVersion =  Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -93,3 +105,5 @@ public enum DeveloperTarget {
     ///正式环境
     case release
 }
+
+

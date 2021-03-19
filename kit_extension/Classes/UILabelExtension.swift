@@ -19,7 +19,7 @@ import UIKit
         let attributedStr = NSAttributedString.init(string: str.nilString(), attributes: [NSAttributedString.Key.shadow : myShadow])
         self.attributedText = attributedStr
     }
-    
+    ///快速实例化label
     class func kit_label(_ fontSize: CGFloat) ->  UILabel {
         let label = UILabel()
         label.textColor = UIColor.black
@@ -36,7 +36,7 @@ import UIKit
      func setAttibuesText(_ text: String, subText: String?, font: UIFont) {
         self.attributedText = text.attributeText(subText ?? "", font)
     }
-    //设置字体和颜色
+    ///设置字体和颜色
      func setAttibuesText(_ text: String, subText: String?, color: UIColor ,font : UIFont) {
         self.attributedText = text.attributeText(subText ?? "", font, color)
 

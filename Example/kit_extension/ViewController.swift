@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import kit_extension
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var array = [1,2,3,4,5,6]
+        array.removeObj(2)
+        
     }
 
     override func didReceiveMemoryWarning() {

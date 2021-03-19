@@ -11,12 +11,8 @@ import UIKit
 
 @objc extension UIImage {
     ///init image form file
-    class public func kit_image(_ imageName: String?) -> UIImage {
-        if imageName == nil || (imageName?.count)! <= 0 {
-            return self.imageWithColor(UIColor.cyan)!
-        }
-        let image = UIImage.init(named: imageName!)
-        return image == nil ? self.imageWithColor(UIColor.cyan)! : image!
+    class public func kit_image(_ imageName: String?) -> UIImage? {
+        return UIImage.init(named: imageName!)
     }
     
     ///init image form color
@@ -66,4 +62,5 @@ import UIKit
         
         return image ?? nil
     }
+
 }

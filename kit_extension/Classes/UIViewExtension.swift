@@ -151,16 +151,6 @@ import UIKit
         self.contentMode = mode
     }
     
-    ///视图转图片
-    func viewToImage() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, kMainScale)
-        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return image!
-    }
-    
     /// 添加渐变色图层
     func gradientColor(_ colors: [Any]) {
         self.removeGradientLayer()
@@ -191,6 +181,17 @@ import UIKit
                 }
             }
         }
+    }
+    
+    ///MARK: - UIView转UIImage
+     func viewToImage() -> UIImage {
+    // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了
+    UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+    let context = UIGraphicsGetCurrentContext()
+    self.layer.render(in: context!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image!
     }
     
 

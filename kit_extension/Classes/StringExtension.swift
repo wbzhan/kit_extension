@@ -223,4 +223,20 @@ public extension String {
         
         return str ?? ""
     }
+    
+    ///获取二维码
+     func generateQRCode(_ rectSize:CGSize) -> UIImage? {
+        
+        let data = self.data(using: String.Encoding.ascii)
+        
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+        
+        filter.setValue(data, forKey: "inputMessage")
+        
+        let transform = CGAffineTransform(scaleX: rectSize.width, y: rectSize.height)
+        
+        guard let output = filter.outputImage?.transformed(by: transform) else { return nil }
+        
+        return UIImage(ciImage: output)
+    }
 }

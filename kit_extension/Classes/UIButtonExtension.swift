@@ -112,7 +112,7 @@ public extension UIButton {
     class func kit_button(image: String, target: Any?, action: Selector?) -> UIButton {
         let btn = UIButton()
         let img = UIImage.kit_image(image)
-        btn.size = img.size
+        btn.size = img?.size ?? .init(width: 0, height: 0)
         if target != nil && action != nil {
             btn.addTarget(target!, action: action!, for: .touchUpInside)
         }
@@ -146,7 +146,7 @@ public extension UIButton {
     class func kit_button(image: String) -> UIButton {
         let btn = UIButton()
         let img = UIImage.kit_image(image)
-        btn.size = img.size
+        btn.size = img?.size ?? .init(width: 0, height: 0)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.setImage(img, for: .normal)
         
