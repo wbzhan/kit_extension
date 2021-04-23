@@ -70,10 +70,10 @@ public func PercentageNumber(_ number: Float) -> String {
 
     let formatter = NumberFormatter()
     formatter.numberStyle = .percent
-    formatter.minimumIntegerDigits = 1
-    formatter.maximumIntegerDigits = 1
-    formatter.maximumFractionDigits = 3
-   return (number >= 0 ? "+" : "") + formatter.string(for: number)!
+    formatter.minimumIntegerDigits = 1//小数点前最小位数
+    formatter.maximumFractionDigits = 2//小数点后最大位数
+   return formatter.string(for: number)!
+
   }
 ///判断两个json数据是否相同
 public func IsSameData(oldData: [String: Any], newData: [String: Any] ) -> Bool {
