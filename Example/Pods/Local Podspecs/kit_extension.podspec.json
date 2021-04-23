@@ -1,8 +1,8 @@
 {
   "name": "kit_extension",
-  "version": "0.1.0",
-  "summary": "A short description of kit_extension.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.2.0",
+  "summary": "A common UIKit Extension",
+  "description": "UIKit 一般扩展内容",
   "homepage": "https://github.com/zhanwenbaoit@126.com/kit_extension",
   "license": {
     "type": "MIT",
@@ -12,11 +12,13 @@
     "zhanwenbaoit@126.com": "wbzhan@yeah.net"
   },
   "source": {
-    "git": "https://github.com/zhanwenbaoit@126.com/kit_extension.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/wbzhan/kit_extension.git",
+    "tag": "0.2.0"
   },
+  "swift_versions": "5.0",
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
-  "source_files": "kit_extension/Classes/**/*"
+  "source_files": "kit_extension/Classes/**/*",
+  "swift_version": "5.0"
 }
