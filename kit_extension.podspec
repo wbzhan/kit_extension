@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'kit_extension'
-  s.version          = '0.2.3'
+  s.version          = '0.2.4'
   s.summary          = 'A common UIKit Extension'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ UIKit 一般扩展内容
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.swift_version = "5.0"
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'kit_extension/Classes/**/*'
   
