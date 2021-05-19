@@ -38,17 +38,7 @@ public func kSizeScale(_ size: CGSize) -> CGSize {
     let height = width / size.width * size.height
     return CGSize.init(width: width, height: height)
 }
-///中号粗体字体
-public func MediumSize(_ size: CGFloat) -> UIFont {
-    return UIFont.mediumFont(size)
-}
-///重号粗体字
-public func SemiboldSize(_ size: CGFloat) -> UIFont {
-    return UIFont.semiboldFont(size)
-}
-public func FontSize(_ size: CGFloat) -> UIFont {
-    return UIFont.font(size)
-}
+
 ///判断字符串为空
 public func IsEmptyStr(_ string: Any?) -> Bool{
     

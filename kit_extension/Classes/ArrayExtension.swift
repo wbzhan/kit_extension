@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 public extension Array {
    
    func objAtIndex(_ index: Int) -> Element? {
