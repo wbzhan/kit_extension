@@ -30,7 +30,7 @@ public extension Array where Element : Equatable {
    
     mutating func removeObj(_ obj: Element){
        let index = self.indexObj(obj)
-       if index <= self.count && index > 0 {
+       if index < self.count && index >= 0 {
            self.remove(at: index)
        }
    }
