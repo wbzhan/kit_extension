@@ -149,7 +149,7 @@ import UIKit
         self.contentMode = mode
     }
     
-    /// 添加渐变色图层
+    /// 添加渐变色图层 --UIColor
     func gradientColor(_ colors: [Any]) {
         self.removeGradientLayer()
         self.superview?.layoutIfNeeded()
@@ -158,8 +158,10 @@ import UIKit
         }
         let layer = CAGradientLayer()
         layer.frame = self.bounds
+        
+       let cgcolors = colors.map{($0 as! UIColor).cgColor}
         ///设置颜色
-        layer.colors = colors
+        layer.colors = cgcolors
         ///设置颜色渐变的位置 （我这里是横向 中间点开始变化）
         layer.locations = [0,1]
         
