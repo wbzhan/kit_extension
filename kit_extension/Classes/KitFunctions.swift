@@ -15,7 +15,7 @@ public func isDistribution() ->  Bool {
     return isDis
 }
 ///本地化语言
-public func LocaledString(_ key: String) -> String{
+public func Locale(_ key: String) -> String{
     return NSLocalizedString(key, comment: "")
 }
 //MARK:  --    以6为标准比例缩放

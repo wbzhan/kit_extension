@@ -13,6 +13,14 @@ import UIKit
 //MARK:   --    分类设置
 @objc public extension UIView {
     
+   @objc enum ShadowType : Int {
+         case Top
+         case bottom
+         case left
+         case right
+         case all
+     }
+    
     var left:CGFloat {
        get {
            return self.frame.origin.x
@@ -124,12 +132,14 @@ import UIKit
         let layer = CAShapeLayer()
         layer.frame = viewRect
         layer.path = path.cgPath
-        
         self.layer.mask = layer
     }
-    
+    //设置阴影
+    func setShadow(color:UIColor,shadowOffset:CGSize){
+        self.setShadow(color: color, shadowOpacity: 1.0, shadowRadius: 2, shadowOffset: size)
+    }
     //MARK:    --   func
-    /// 添加自定义阴影
+    /// 添加自定义阴影-- 默认向下阴影
     /// - Parameters:
     ///   - color: 阴影颜色
     ///   - shadowOpacity: 阴影透明度

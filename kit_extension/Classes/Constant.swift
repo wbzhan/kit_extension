@@ -24,8 +24,11 @@ public let kMainHeight = kScreenHeight - kNavHeight - kStatusBarHeight
 public let kTopHeight = kNavHeight + kStatusBarHeight
 ///底部高度
 public let kBottomHeight = (iPhoneX_All ? CGFloat(34.0) : CGFloat(0.0))
+
 ///tabBar height
 public let kTabBarHeight = CGFloat(49.0)
+//
+public let kBottomTotalHeight = kBottomHeight + kTabBarHeight
 ///mainScale
 public let kMainScale = UIScreen.main.scale
 ///one_px
