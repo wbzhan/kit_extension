@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-
+//阴影类型
+@objc public enum ShadowType : Int {
+     case top
+     case bottom
+     case left
+     case right
+     case all
+ }
 //MARK:   --    分类设置
 @objc public extension UIView {
-    //阴影类型
-    @objc  enum ShadowType : Int {
-         case top
-         case bottom
-         case left
-         case right
-         case all
-     }
+
     //MARK: -- RECT
     var left:CGFloat {
        get {
@@ -144,20 +144,15 @@ import UIKit
         board.path = UIBezierPath.init(roundedRect: .init(x: 0, y: 0, width: self.width, height: self.height), cornerRadius: layer.cornerRadius).cgPath
         board.frame = bounds
         board.lineWidth = 1.0
-        board.lineCap = "square"
         // 第一个是 线条长度 第二个是间距 nil时为实线
-        board.lineDashPattern = [2,2]
+        board.lineDashPattern = [NSNumber.init(value: 2.0),NSNumber.init(value: 2.0)]
         layer.addSublayer(board)
     }
     //MARK: -- 阴影
-    ///设置阴影
-    func setShadow(){
-        self.setShadow(type: .all, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
-    }
     func setShadow(_ type: ShadowType){
         self.setShadow(type: type, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
     }
-    func setShadow(_ type: ShadowType, color: UIColor){
+    func setShadow(_ type: ShadowType,_ color: UIColor){
         self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 3)
     }
     ///设置阴影

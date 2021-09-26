@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         self.view.addSubview(v1)
 
         v1.setShadow(.all)
+        
+        v1.setShadow()
        
         
     }
