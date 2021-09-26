@@ -89,7 +89,7 @@ public var iPhoneX_All: Bool! {
 ///begin request data
 public typealias Prepare = () -> Void
 ///request data success
-///request data failur
+///request data failure
 public typealias Failure = (_ error: Error?) -> Void
 ///finished something call back
 public typealias Completed = () -> Void

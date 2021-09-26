@@ -13,14 +13,14 @@ import UIKit
 //MARK:   --    分类设置
 @objc public extension UIView {
     //阴影类型
-   @objc enum ShadowType : Int {
+    enum ShadowType : Int {
          case top
          case bottom
          case left
          case right
          case all
      }
-    
+    //MARK: -- RECT
     var left:CGFloat {
        get {
            return self.frame.origin.x
@@ -136,12 +136,32 @@ import UIKit
         self.layer.mask = layer
     }
     
-    
-    func setShadow(_ type: ShadowType, color: UIColor = .black){
-        self.setShadow(type: type, color: color, opactiy: 1.0, shadowSize: 4)
+    ///设置虚线边框
+    func setDashBorderLayer(_ color:UIColor = .colorSrting("#CCCCCC")){
+        let board = CAShapeLayer()
+        board.strokeColor = color.cgColor
+        board.fillColor = nil
+        board.path = UIBezierPath.init(roundedRect: .init(x: 0, y: 0, width: self.width, height: self.height), cornerRadius: layer.cornerRadius).cgPath
+        board.frame = bounds
+        board.lineWidth = 1.0
+        board.lineCap = "square"
+        // 第一个是 线条长度 第二个是间距 nil时为实线
+        board.lineDashPattern = [2,2]
+        layer.addSublayer(board)
+    }
+    //MARK: -- 阴影
+    ///设置阴影
+    func setShadow(){
+        self.setShadow(type: .all, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
+    }
+    func setShadow(_ type: ShadowType){
+        self.setShadow(type: type, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
+    }
+    func setShadow(_ type: ShadowType, color: UIColor){
+        self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 3)
     }
     ///设置阴影
-    func setShadow(type: ShadowType = .all, color: UIColor = .black,  opactiy: Float = 1, shadowSize: CGFloat = 4) {
+    func setShadow(type: ShadowType = .all, color: UIColor = .black,  opactiy: Float = 1, shadowSize: CGFloat = 3) {
         self.layoutIfNeeded()
         layer.masksToBounds = false//必须要等于NO否则会把阴影切割隐藏掉
         layer.shadowColor = color.cgColor// 阴影颜色
@@ -161,7 +181,9 @@ import UIKit
         case .right:
             shadowRect = CGRect.init(x: bounds.size.width - shadowSize, y: -shadowSize, width: 2 * shadowSize, height: bounds.size.height + 2 * shadowSize)
         }
-        layer.shadowPath = UIBezierPath.init(rect: shadowRect!).cgPath
+        if type != .all{
+            layer.shadowPath = UIBezierPath.init(rect: shadowRect!).cgPath
+        }
     }
     
     ///设置显示模式
