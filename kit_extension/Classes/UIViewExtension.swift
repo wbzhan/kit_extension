@@ -13,7 +13,7 @@ import UIKit
 //MARK:   --    分类设置
 @objc public extension UIView {
     //阴影类型
-    enum ShadowType : Int {
+    @objc  enum ShadowType : Int {
          case top
          case bottom
          case left
