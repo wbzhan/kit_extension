@@ -9,14 +9,111 @@
 import Foundation
 import UIKit
 
-public enum Position {
+@objc public enum Position : Int {
          case  imageLeft  // 图片在左，文字在右，默认
          case  imageRight     // 图片在右，文字在左
          case  imageTop      // 图片在上，文字在下
          case  imageBottom   // 图片在下，文字在上
    }
 
-public extension UIButton {
+
+func associatedObject<ValueType: AnyObject>(
+    base: AnyObject,
+    key: UnsafePointer<UInt8>,
+    initialiser: () -> ValueType)
+    -> ValueType {
+        if let associated = objc_getAssociatedObject(base, key)
+            as? ValueType { return associated }
+        let associated = initialiser()
+        objc_setAssociatedObject(base, key, associated,
+                                 .OBJC_ASSOCIATION_RETAIN)
+        return associated
+}
+func associateObject<ValueType: AnyObject>(
+    base: AnyObject,
+    key: UnsafePointer<UInt8>,
+    value: ValueType) {
+    objc_setAssociatedObject(base, key, value,
+                             .OBJC_ASSOCIATION_RETAIN)
+}
+ 
+private var topKey: UInt8 = 0
+private var bottomKey: UInt8 = 0
+private var leftKey: UInt8 = 0
+private var rightKey: UInt8 = 0
+
+@objc public extension UIButton {
+    
+   private var topEdg: NSNumber {
+        get {
+            return associatedObject(base: self, key: &topKey)
+            { return 0 }
+        }
+        set {
+            associateObject(base: self, key: &topKey, value: newValue)
+        }
+    }
+    
+    private var bottomEdg: NSNumber {
+        get {
+            return associatedObject(base: self, key: &bottomKey)
+            { return 0 }
+        }
+        set {
+            associateObject(base: self, key: &bottomKey, value: newValue)
+        }
+    }
+    
+    private var leftEdg: NSNumber {
+        get {
+            return associatedObject(base: self, key: &leftKey)
+            { return 0 }
+        }
+        set {
+            associateObject(base: self, key: &leftKey, value: newValue)
+        }
+    }
+    
+    private var rightEdg: NSNumber {
+        get {
+            return associatedObject(base: self, key: &rightKey)
+            { return 0 }
+        }
+        set {
+            associateObject(base: self, key: &rightKey, value: newValue)
+        }
+    }
+    //扩大按钮点击范围
+    func setEnlargeEdge(top: Float, bottom: Float, left: Float, right: Float) {
+        self.topEdg = NSNumber.init(value: top)
+        self.bottomEdg = NSNumber.init(value: bottom)
+        self.leftEdg = NSNumber.init(value: left)
+        self.rightEdg = NSNumber.init(value: right)
+    }
+    
+    private func enlargedRect() -> CGRect {
+        let top = self.topEdg
+        let bottom = self.bottomEdg
+        let left = self.leftEdg
+        let right = self.rightEdg
+        if top.floatValue >= 0, bottom.floatValue >= 0, left.floatValue >= 0, right.floatValue >= 0 {
+            return CGRect.init(x: self.bounds.origin.x - CGFloat(left.floatValue),
+                               y: self.bounds.origin.y - CGFloat(top.floatValue),
+                               width: self.bounds.size.width + CGFloat(left.floatValue) + CGFloat(right.floatValue),
+                               height: self.bounds.size.height + CGFloat(top.floatValue) + CGFloat(bottom.floatValue))
+        }
+        else {
+            return self.bounds
+        }
+    }
+    
+     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let rect = self.enlargedRect()
+        if rect.equalTo(self.bounds) {
+            return super.point(inside: point, with: event)
+        }
+        return rect.contains(point) ? true : false
+    }
     
     ///设置文字图片间隔
     func setImagePisition(postion:Position , spacing: CGFloat)

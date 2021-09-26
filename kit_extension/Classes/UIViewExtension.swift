@@ -14,7 +14,7 @@ import UIKit
 @objc public extension UIView {
     
    @objc enum ShadowType : Int {
-         case Top
+         case top
          case bottom
          case left
          case right
@@ -126,6 +126,7 @@ import UIKit
         }
     }
     
+    
     ///设置部分圆角
     func addRoundedCorners(corners: UIRectCorner, radii: CGSize, viewRect: CGRect) {
         let path = UIBezierPath.init(roundedRect: viewRect, byRoundingCorners: corners, cornerRadii: radii)
@@ -134,23 +135,33 @@ import UIKit
         layer.path = path.cgPath
         self.layer.mask = layer
     }
-    //设置阴影
-    func setShadow(color:UIColor,shadowOffset:CGSize){
-        self.setShadow(color: color, shadowOpacity: 1.0, shadowRadius: 2, shadowOffset: size)
+    
+    
+    func setShadow(_ type: ShadowType, color: UIColor = .black){
+        self.setShadow(type: type, color: color, opactiy: 1.0, shadowSize: 4)
     }
-    //MARK:    --   func
-    /// 添加自定义阴影-- 默认向下阴影
-    /// - Parameters:
-    ///   - color: 阴影颜色
-    ///   - shadowOpacity: 阴影透明度
-    ///   - shadowRadius: 阴影半径
-    ///   - shadowOffset: 阴影偏移,x向右偏移0，y向下偏移，默认(0, -3),和shadowRadius配合使用
-    func setShadow(color:UIColor = UIColor.lightGray,shadowOpacity:Float = 0.3,shadowRadius:CGFloat = 3,shadowOffset:CGSize = .init(width: 0, height: 3)){
+    ///设置阴影
+    func setShadow(type: ShadowType = .all, color: UIColor = .black,  opactiy: Float = 1, shadowSize: CGFloat = 4) {
         self.layoutIfNeeded()
-        self.layer.shadowColor = color.cgColor
-        self.layer.shadowOffset = shadowOffset
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowRadius = shadowRadius
+        layer.masksToBounds = false//必须要等于NO否则会把阴影切割隐藏掉
+        layer.shadowColor = color.cgColor// 阴影颜色
+        layer.shadowOpacity = opactiy;// 阴影透明度，默认0
+        layer.shadowOffset = .zero;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用
+        layer.shadowRadius = 3 //阴影半径，默认3
+        var shadowRect: CGRect?
+        switch type {
+        case .all:
+            shadowRect = CGRect.init(x: -shadowSize, y: -shadowSize, width: bounds.size.width + 2 * shadowSize, height: bounds.size.height + 2 * shadowSize)
+        case .top:
+            shadowRect = CGRect.init(x: -shadowSize, y: -shadowSize, width: bounds.size.width + 2 * shadowSize, height: 2 * shadowSize)
+        case .bottom:
+            shadowRect = CGRect.init(x: 0, y: bounds.size.height - shadowSize, width: bounds.size.width, height: 2 * shadowSize)
+        case .left:
+            shadowRect = CGRect.init(x: -shadowSize, y: -shadowSize, width: 2 * shadowSize, height: bounds.size.height + 2 * shadowSize)
+        case .right:
+            shadowRect = CGRect.init(x: bounds.size.width - shadowSize, y: -shadowSize, width: 2 * shadowSize, height: bounds.size.height + 2 * shadowSize)
+        }
+        layer.shadowPath = UIBezierPath.init(rect: shadowRect!).cgPath
     }
     
     ///设置显示模式
