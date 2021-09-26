@@ -147,6 +147,9 @@ public func kCurrentWindow() -> UIWindow? {
     if let window = UIApplication.shared.windows.last, NSStringFromClass(window.classForCoder) == "UIRemoteKeyboardWindow" {
         return window
     }
+    if UIApplication.shared.keyWindow == nil {
+        return  UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow
+    }
     return UIApplication.shared.keyWindow
 }
 
@@ -157,7 +160,7 @@ public func goTabbarIndex(_ index:Int){
 }
 
 public func kCurrentVC() -> UIViewController? {
-    var VC = UIApplication.shared.keyWindow?.rootViewController
+    var VC = kCurrentWindow()?.rootViewController
 
     if let nav = VC as? UINavigationController {
         VC = nav.viewControllers.last

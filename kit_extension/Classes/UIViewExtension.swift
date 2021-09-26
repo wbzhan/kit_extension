@@ -12,7 +12,7 @@ import UIKit
 
 //MARK:   --    分类设置
 @objc public extension UIView {
-    
+    //阴影类型
    @objc enum ShadowType : Int {
          case top
          case bottom
@@ -213,6 +213,51 @@ import UIKit
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return image!
+    }
+    
+    //alert弹框
+    class func showAlert( title:String?, message:String? , cancelTitle:String?, sureTitle:String?,cancelBlock: Completed?, sureBlock:Completed?){
+        
+        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+        
+        if cancelTitle != nil {
+            let cancel = UIAlertAction.init(title: cancelTitle ?? Locale("CANCEL"), style: .cancel) { _ in
+                cancelBlock?()
+            }
+            alert.addAction(cancel)
+        }
+        
+        if sureTitle != nil {
+            
+            let sure = UIAlertAction.init(title: sureTitle, style: .default) { _ in
+                sureBlock?()
+            }
+            alert.addAction(sure)
+            
+        }
+        
+        kCurrentVC()?.present(alert, animated: false, completion: nil)
+    }
+    //actionsheet 弹框
+    class func showActionSheet( title:String? , message:String?, cancelTitle:String?,items:[String]!,cancelBlock: Completed?, callBack:@escaping CallBackClosure){
+        
+        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction.init(title: cancelTitle ?? Locale("CANCEL"), style: .cancel) { _ in
+            
+        }
+        alert.addAction(cancel)
+        
+        for index  in 0..<items.count {
+            let name = items.objAtIndex(index)
+            let action = UIAlertAction.init(title: name, style: .default) { _ in
+                callBack(index)
+            }
+            alert.addAction(action)
+        }
+        kCurrentVC()?.present(alert, animated: false, completion: nil)
+        
+        
     }
     
 
