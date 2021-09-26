@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
-//阴影类型
-@objc public enum ShadowType : Int {
-     case top
-     case bottom
-     case left
-     case right
-     case all
- }
+
 //MARK:   --    分类设置
 @objc public extension UIView {
+    
+    //阴影类型
+    @objc enum ShadowType : Int {
+         case top
+         case bottom
+         case left
+         case right
+         case all
+     }
 
     //MARK: -- RECT
     var left:CGFloat {
@@ -152,7 +154,7 @@ import UIKit
     func setShadow(_ type: ShadowType){
         self.setShadow(type: type, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
     }
-    func setShadow(_ type: ShadowType,_ color: UIColor){
+    func setShadow(_ type: ShadowType ,_ color: UIColor){
         self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 3)
     }
     ///设置阴影
