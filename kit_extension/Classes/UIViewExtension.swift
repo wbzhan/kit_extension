@@ -161,7 +161,7 @@ import UIKit
         self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 3)
     }
     ///设置阴影
-    func setShadow(type: ShadowType = .all, color: UIColor = .black,  opactiy: Float = 1, shadowSize: CGFloat = 3) {
+    func setShadow(type: ShadowType = .all, color: UIColor = .colorSrting("#C1C1C1"),  opactiy: Float = 0.5, shadowSize: CGFloat = 3) {
         self.layoutIfNeeded()
         layer.masksToBounds = false//必须要等于NO否则会把阴影切割隐藏掉
         layer.shadowColor = color.cgColor// 阴影颜色
