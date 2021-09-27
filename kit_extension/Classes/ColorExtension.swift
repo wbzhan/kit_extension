@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public extension UIColor {
+@objc public extension UIColor {
     class func colorSrting(_ string: String) -> UIColor {
         return self.colorSrting(string, alpha: 1.0)
     }

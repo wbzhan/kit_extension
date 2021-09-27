@@ -6,7 +6,7 @@
 //
 
 import Foundation
-extension Dictionary {
+public extension Dictionary {
     //json转jsonstring
    func toJsonString() ->String{
         guard let data = try? JSONSerialization.data(withJSONObject: self, options: []) else { return ""}

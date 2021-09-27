@@ -151,20 +151,23 @@ import UIKit
         layer.addSublayer(board)
     }
     //MARK: -- 阴影
+    func setShadow(){
+        self.setShadow(type: .all, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 2.5)
+    }
     func setShadow(_ type: ShadowType){
-        self.setShadow(type: type, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 3)
+        self.setShadow(type: type, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 2.5)
     }
     func setShadow(_ type: ShadowType ,_ color: UIColor){
-        self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 3)
+        self.setShadow(type: type, color: color, opactiy: 0.5, shadowSize: 2.5)
     }
     ///设置阴影
-    func setShadow(type: ShadowType = .all, color: UIColor = .colorSrting("#C1C1C1"),  opactiy: Float = 0.5, shadowSize: CGFloat = 3) {
+    func setShadow(type: ShadowType = .all, color: UIColor = .colorSrting("#C1C1C1"),  opactiy: Float = 0.5, shadowSize: CGFloat = 2.5) {
         self.layoutIfNeeded()
         layer.masksToBounds = false//必须要等于NO否则会把阴影切割隐藏掉
         layer.shadowColor = color.cgColor// 阴影颜色
         layer.shadowOpacity = opactiy;// 阴影透明度，默认0
         layer.shadowOffset = .zero;//shadowOffset阴影偏移，默认(0, -3),这个跟shadowRadius配合使用
-        layer.shadowRadius = 3 //阴影半径，默认3
+        layer.shadowRadius = shadowSize //阴影半径，默认2.5
         var shadowRect: CGRect?
         switch type {
         case .all:
