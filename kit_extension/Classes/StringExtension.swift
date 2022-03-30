@@ -45,7 +45,7 @@ public extension String {
     
     func stringToNum() -> NSNumber {
         if self == "(null)" || self == "null" || self == "<null>" || self.isEmpty {
-            return 0
+            return NSNumber.init(value: 0)
         }
         let nonDigits = CharacterSet.decimalDigits.inverted
         let numStr = self.trimmingCharacters(in: nonDigits)
@@ -53,7 +53,7 @@ public extension String {
             
             return NSNumber.init(value: num)
         }
-        return 0
+        return NSNumber.init(value: 0)
     }
     
     ///验证是否为合格邮箱
@@ -250,5 +250,23 @@ public extension String {
         guard let output = filter.outputImage?.transformed(by: transform) else { return nil }
         
         return UIImage(ciImage: output)
+    }
+    
+    ///字体计算当前文字宽度
+    func textWidth(fontSize:CGFloat)->Float{
+        return self.textWidth(font: .font(fontSize))
+    }
+    ///计算当前文字宽度
+    func textWidth(font:UIFont)->Float{
+        
+        let size = CGSize(width: CGFloat(MAXFLOAT), height: font.pointSize + 5)
+        
+        let attributes = [NSAttributedString.Key.font:font]
+        
+        let text = self as NSString
+        
+        let rect = text.boundingRect(with: size, options:.usesLineFragmentOrigin, attributes: attributes, context:nil)
+        
+        return ceilf(Float(rect.size.width))
     }
 }

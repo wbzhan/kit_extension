@@ -144,13 +144,26 @@ public func StringToInt(str:String)->(Int){
 }
 //MARK:      ---    当前显示window和vc
 public func kCurrentWindow() -> UIWindow? {
-    if let window = UIApplication.shared.windows.last, NSStringFromClass(window.classForCoder) == "UIRemoteKeyboardWindow" {
-        return window
+    if #available(iOS 13.0, *) {
+        if let window = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first{
+            return window
+        }else if let window = UIApplication.shared.delegate?.window{
+            return window
+        }else{
+            return nil
+        }
+    } else {
+        if let window = UIApplication.shared.delegate?.window{
+            return window
+        }else{
+            return nil
+        }
     }
-    if UIApplication.shared.keyWindow == nil {
-        return  UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow
-    }
-    return UIApplication.shared.keyWindow
 }
 
 public func goTabbarIndex(_ index:Int){

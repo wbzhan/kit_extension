@@ -98,15 +98,15 @@ public typealias CallBackClosure = (_ obj: Any?) -> Void
 
 //MARK:   ----   environment
 ///当前部署环境
-public enum DeveloperTarget {
+public enum DeveloperTarget : Int {
     ///开发
-    case dev
+    case dev = 0
     ///测试
-    case test
+    case test = 1
     ///预发布
-    case preRelease
+    case preRelease = 2
     ///正式环境
-    case release
+    case release = 3
 }
 
 

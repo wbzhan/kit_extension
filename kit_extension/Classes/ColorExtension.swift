@@ -20,7 +20,7 @@ import UIKit
             colorString = String(string.suffix(string.count - 1))
         }
         if (colorString.count != 6) {
-            return UIColor.gray
+            return UIColor.black
         }
         let rString = String(colorString.prefix(2))
         let gIndex = string.index(colorString.startIndex, offsetBy: 2)

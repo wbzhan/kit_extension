@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 @objc public extension UILabel {
+    
+    ///添加删除线
+   func addUnderLine(_ text: String) {
+        let attStr = NSMutableAttributedString.init(string: text)
+      attStr.addAttribute(.strikethroughStyle, value: 1, range: text.nsRangeString(text))
+        self.attributedText = attStr
+    }
+    ///添加阴影
      func textShadow(_ str: String) {
         let myShadow = NSShadow()
         myShadow.shadowBlurRadius = 3
@@ -25,6 +33,41 @@ import UIKit
         label.textColor = UIColor.black
         label.font = UIFont.systemFont(ofSize: fontSize)
         return label
+    }
+    
+    func imageText(text:String){
+        self.imageText(imgName: "icon_multiply", text: text, imageSize: .init(width: 8, height: 8))
+    }
+    
+    func imageText(imgName:String,text:String,imageSize:CGSize = .init(width: 8, height: 8)){
+        let voiceAttr = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        let voiceImage = UIImage(named: imgName)
+        
+        imageAttachment.image = voiceImage
+        imageAttachment.bounds = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
+        let imgAttr = NSAttributedString(attachment: imageAttachment)
+        voiceAttr.append(imgAttr)
+        let textArt = NSAttributedString(string: text)
+        voiceAttr .append(textArt)
+        self.attributedText = voiceAttr
+    }
+    
+    func tipsImageText(imgName:String,text:String,imageSize:CGSize = .init(width: 11, height: 11)){
+        
+        let fontSize = self.font.pointSize
+        
+        let voiceAttr = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        let voiceImage = UIImage(named: imgName)
+        
+        imageAttachment.image = voiceImage
+        imageAttachment.bounds = CGRect(x: 0, y: imageSize.height - fontSize - 1, width: imageSize.width, height: imageSize.height)
+        let imgAttr = NSAttributedString(attachment: imageAttachment)
+        voiceAttr.append(imgAttr)
+        let textArt = NSAttributedString(string: text)
+        voiceAttr .append(textArt)
+        self.attributedText = voiceAttr
     }
     
     ///设置颜色
