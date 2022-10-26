@@ -23,18 +23,17 @@ import UIKit
      }
 
     //MARK: -- RECT
-    var left:CGFloat {
+    @objc var left:CGFloat {
        get {
            return self.frame.origin.x
-       }
-       set(newLeft) {
+       }set(newLeft) {
            var frame = self.frame
            frame.origin.x = newLeft
            self.frame = frame
        }
    }
    
-    var top:CGFloat {
+    @objc var top:CGFloat {
        get {
            return self.frame.origin.y
        }
@@ -46,7 +45,7 @@ import UIKit
        }
    }
    
-   var width:CGFloat {
+    @objc var width:CGFloat {
        get {
            return self.frame.size.width
        }
@@ -58,7 +57,7 @@ import UIKit
        }
    }
    
-   var height:CGFloat {
+    @objc var height:CGFloat {
        get {
            return self.frame.size.height
        }
@@ -70,7 +69,7 @@ import UIKit
        }
    }
    
-   var right:CGFloat {
+    @objc var right:CGFloat {
        get {
            return self.left + self.width
        }
@@ -81,7 +80,7 @@ import UIKit
               }
    }
    
-   var bottom:CGFloat {
+    @objc var bottom:CGFloat {
        get {
            return self.top + self.height
        }
@@ -151,7 +150,7 @@ import UIKit
         layer.addSublayer(board)
     }
     //MARK: -- 阴影
-    func setShadow(){
+   @objc func setShadow(){
         self.setShadow(type: .all, color: .colorSrting("#C1C1C1"), opactiy: 0.5, shadowSize: 2.5)
     }
     func setShadow(_ type: ShadowType){

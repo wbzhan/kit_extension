@@ -8,7 +8,7 @@
 
 import UIKit
 import kit_extension
-class ViewController: UIViewController {
+@objc class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         btn.addTarget(self, action: #selector(click), for: .touchUpInside)
         self.view.addSubview(btn)
         
-
         let v1 = UIView()
         v1.backgroundColor = .white
         v1.frame = .init(x: 100, y: 220, width: 100, height: 100)
@@ -41,12 +40,19 @@ class ViewController: UIViewController {
         v1.setShadow(.all)
         
         v1.setShadow()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+
+        };
        
         
     }
+    
 
    @objc func click(){
         print("click")
+       let test = TestKitVc()
+       self.present(test, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

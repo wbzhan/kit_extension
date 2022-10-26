@@ -12,9 +12,12 @@ import UIKit
 @objc public extension UILabel {
     
     ///添加删除线
-   func addUnderLine(_ text: String) {
+    func addUnderLine(_ text: String ,color:UIColor?) {
         let attStr = NSMutableAttributedString.init(string: text)
       attStr.addAttribute(.strikethroughStyle, value: 1, range: text.nsRangeString(text))
+       if color != nil {
+           attStr.addAttribute(.strikethroughColor, value: color!, range: text.nsRangeString(text))
+       }
         self.attributedText = attStr
     }
     ///添加阴影
