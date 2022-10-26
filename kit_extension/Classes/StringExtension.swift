@@ -63,6 +63,12 @@ public extension String {
         return self.checkString(rule)
     }
     
+    //8-20位数字或者字母
+    func isPassword() ->Bool{
+        let rule = "[0-9A-Za-z]{8,20}$"
+        return self.checkString(rule)
+    }
+    
     ///只包含英文和数字
     func isLettersNumber() -> Bool {
         let rule = "[a-zA-Z0-9]+"

@@ -46,6 +46,8 @@ public let APP_Domin = (UserDefaults.standard.object(forKey: kServer) ?? "" ) as
 public let APP_image_Domin = (UserDefaults.standard.object(forKey: kImageDomin) ?? "") as? String ?? ""
 //白色背景
 public let kWhiteColor = UIColor.colorSrting("#FFFFFF")
+//黑色背景
+public let kBlackColor = UIColor.colorSrting("#000000")
 
 public let kPlaceHolderImage = UIImage.init(named: "placeHolderImage")
 
