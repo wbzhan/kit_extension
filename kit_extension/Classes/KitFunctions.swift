@@ -189,8 +189,6 @@ public func kCurrentVC() -> UIViewController? {
     if let presetVC = VC?.presentedViewController {
         if let nav = presetVC as? UINavigationController {
             VC = nav.viewControllers.last
-        }else {
-            VC = presetVC
         }
     }
 
@@ -207,7 +205,7 @@ public func kGetDeviceModel () -> String? {
         return identifier + String(UnicodeScalar(UInt8(value)))
     }
     switch identifier {
-    //iPhone
+        //iPhone
     case "iPhone1,1":                 return "iPhone 1G"
     case "iPhone1,2":                 return "iPhone 3G"
     case "iPhone2,1":                 return "iPhone 3GS"
@@ -236,7 +234,15 @@ public func kGetDeviceModel () -> String? {
     case "iPhone13,2":                return "iPhone 12"
     case "iPhone13,3":                return "iPhone 12 Pro"
     case "iPhone13,4":                return "iPhone 12 Pro Max"
-
+    case "iPhone14,2":                return "iPhone 13 Pro"
+    case "iPhone14,3":                return "iPhone 13 Pro Max"
+    case "iPhone14,4":                return "iPhone 13 mini"
+    case "iPhone14,5":                return "iPhone 13"
+    case "iPhone14,6":                return "iPhone SE 3rd Gen"
+    case "iPhone14,7":                return "iPhone 14"
+    case "iPhone14,8":                return "iPhone 14 Plus"
+    case "iPhone15,2":                return "iPhone 14 Pro"
+    case "iPhone15,3":                return "iPhone 14 Pro Max"
     case "i386", "x86_64":                          return "Simulator"
     default:
         return identifier

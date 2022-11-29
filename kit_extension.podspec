@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'kit_extension'
-  s.version          = '0.3.6'
+  s.version          = '0.3.7'
   s.summary          = 'A common UIKit Extension'
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ UIKit 一般扩展内容
 
   s.homepage         = 'https://github.com/zhanwenbaoit@126.com/kit_extension'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'zhanwenbaoit@126.com' => 'wbzhan@yeah.net' }
+  s.author           = { 'Eric' => 'zhanwenbaoit@126.com' }
   s.source           = { :git => 'https://github.com/wbzhan/kit_extension.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
