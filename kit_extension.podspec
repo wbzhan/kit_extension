@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 UIKit 一般扩展内容
                        DESC
 
-  s.homepage         = 'https://github.com/zhanwenbaoit@126.com/kit_extension'
+  s.homepage         = 'https://github.com/wbzhan/kit_extension'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Eric' => 'zhanwenbaoit@126.com' }
   s.source           = { :git => 'https://github.com/wbzhan/kit_extension.git', :tag => s.version.to_s }
