@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'kit_extension'
-  s.version          = '0.3.9'
+  s.version          = '0.4.0'
   s.summary          = 'A common UIKit Extension'
 
 # This description is used to generate tags and improve search results.
