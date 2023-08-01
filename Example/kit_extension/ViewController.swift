@@ -53,6 +53,9 @@ import kit_extension
         print("click")
        let test = TestKitVc()
        self.present(test, animated: true)
+       
+       let list = [String]()
+       list.objAtIndex(1)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -8,7 +8,7 @@
 
 import Foundation
 public extension Array {
-   
+    @available(*, deprecated, renamed:"ub_objAtIndex")
    func objAtIndex(_ index: Int) -> Element? {
        if self.isEmpty {
            return nil
@@ -23,11 +23,10 @@ public extension Array {
 
 // MARK:-、遵守 Equatable 协议的数组
 public extension Array where Element : Equatable {
-    
+    @available(*, deprecated, renamed:"ub_indexObject")
     func indexObj(_  obj: Element) -> Int {
         return self.firstIndex(of: obj) ?? 0
     }
-   
     mutating func removeObj(_ obj: Element){
        let index = self.indexObj(obj)
        if index < self.count && index >= 0 {
