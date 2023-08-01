@@ -24,7 +24,6 @@ public let kMainHeight = kScreenHeight - kNavHeight - kStatusBarHeight
 public let kTopHeight = kNavHeight + kStatusBarHeight
 ///底部高度
 public let kBottomHeight = (iPhoneX_All ? CGFloat(34.0) : CGFloat(0.0))
-
 ///tabBar height
 public let kTabBarHeight = CGFloat(49.0)
 //
@@ -73,6 +72,8 @@ public var kDeviceUDID :String!{
         return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
 }
+@available(iOS 11.0, *)//是否为全面屏
+public let isFullScreenDevice = (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0
 ///判断iPhoneX所有系列
 public var iPhoneX_All: Bool! {
     get {
@@ -80,7 +81,7 @@ public var iPhoneX_All: Bool! {
             return false
         }
         if #available(iOS 11.0, *) {
-            return (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0
+            return isFullScreenDevice
         }
         return false
     }
