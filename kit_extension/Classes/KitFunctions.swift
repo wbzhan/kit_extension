@@ -55,6 +55,12 @@ public func IsEmptyStr(_ string: Any?) -> Bool{
         return true
     }
 }
+
+public func getNowTimesTamp()->String{
+    let date = NSDate()
+    let result = Int(date.timeIntervalSince1970*1000)
+    return "\(result)"
+}
 ///百分比
 public func PercentageNumber(_ number: Float) -> String {
 
