@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-public var KitFontNameRegular = "Futura-Book"
-public var KitFontNameMedium = "Futura-Medium"
-public var KitFontNameBold = "Futura-Medium"
+public var KitFontNameRegular = "PingFangSC-Regular"//平方细体
+public var KitFontNameMedium = "PingFangSC-Medium"//平方中粗体
+public var KitFontNameBold = "PingFangSC-Medium"//平方中粗体
 
 @objc public extension UIFont {
     //regular

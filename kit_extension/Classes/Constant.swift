@@ -73,7 +73,7 @@ public var kDeviceUDID :String!{
     }
 }
 @available(iOS 11.0, *)//是否为全面屏 -- 使用(UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0 可能判断不准确，当前keywindow随时会变更，页面push或者弹窗的时候某个时序的keyWindow可能为nil
-public let isFullScreenDevice = (UIApplication.shared.delegate?.window??.bottom ?? 0) > 0
+public let isFullScreenDevice = UIApplication.shared.statusBarFrame.size.height > 21.0
 ///判断iPhoneX所有系列
 public var iPhoneX_All: Bool! {
     get {
