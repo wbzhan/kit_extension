@@ -12,7 +12,6 @@ import UIKit
 
 //MARK:   --    分类设置
 @objc public extension UIView {
-    
     //阴影类型
     @objc enum ShadowType : Int {
          case top
@@ -21,9 +20,8 @@ import UIKit
          case right
          case all
      }
-
     //MARK: -- RECT
-    @objc var left:CGFloat {
+    var left:CGFloat {
        get {
            return self.frame.origin.x
        }set(newLeft) {
@@ -32,8 +30,10 @@ import UIKit
            self.frame = frame
        }
    }
+    
+    
    
-    @objc var top:CGFloat {
+    var top:CGFloat {
        get {
            return self.frame.origin.y
        }
@@ -45,7 +45,7 @@ import UIKit
        }
    }
    
-    @objc var width:CGFloat {
+    var width:CGFloat {
        get {
            return self.frame.size.width
        }
@@ -57,7 +57,7 @@ import UIKit
        }
    }
    
-    @objc var height:CGFloat {
+    var height:CGFloat {
        get {
            return self.frame.size.height
        }
@@ -69,7 +69,7 @@ import UIKit
        }
    }
    
-    @objc var right:CGFloat {
+    var right:CGFloat {
        get {
            return self.left + self.width
        }
@@ -80,7 +80,7 @@ import UIKit
               }
    }
    
-    @objc var bottom:CGFloat {
+    var bottom:CGFloat {
        get {
            return self.top + self.height
        }
@@ -123,6 +123,37 @@ import UIKit
         set{
             var frame = self.frame
             frame.size = newValue
+            self.frame = frame
+        }
+    }
+    
+    var x:CGFloat{
+        get {
+            return self.frame.origin.x
+        }set {
+            var frame = self.frame
+            frame.origin.x = newValue
+            self.frame = frame
+        }
+    }
+    
+    var y:CGFloat{
+        get {
+            return self.left + self.width
+        }
+        set {
+            var frame = self.frame
+            frame.origin.x = newValue - self.width
+            self.frame = frame
+        }
+    }
+    
+    var origin:CGPoint{
+        get{
+            self.frame.origin
+        }set{
+            var frame = self.frame
+            frame.origin = newValue
             self.frame = frame
         }
     }
