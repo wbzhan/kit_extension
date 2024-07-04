@@ -119,7 +119,15 @@ private var rightKey: UInt8 = 0
     func setImagePisition(postion:Position , spacing: CGFloat)
     {
         self.layoutIfNeeded()
-        
+        var ps = postion
+        ///兼容RTL
+        if UIView.appearance().semanticContentAttribute == .forceRightToLeft {
+            if ps == .imageLeft {
+                ps = .imageRight
+            }else if ps == .imageRight {
+                ps = .imageLeft
+            }
+        }
         let imageWidth = self.imageView?.image?.size.width ?? 0
         let imageHeight = self.imageView?.image?.size.height ?? 0
         let txtStr = NSString.init(string: self.titleLabel?.text ?? "")
@@ -143,7 +151,7 @@ private var rightKey: UInt8 = 0
         let tempHeight = max(labelHeight, imageHeight)
         let changedHeight = labelHeight + imageHeight + spacing - tempHeight
         
-        switch (postion) {
+        switch (ps) {
         case .imageLeft:
             self.imageEdgeInsets = UIEdgeInsets.init(top: 0,left: -spacing / 2,bottom : 0,right: spacing / 2)
                 self.titleEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2, bottom :0,right:  -spacing / 2);
