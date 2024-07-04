@@ -119,15 +119,6 @@ private var rightKey: UInt8 = 0
     func setImagePisition(postion:Position , spacing: CGFloat)
     {
         self.layoutIfNeeded()
-        var ps = postion
-        ///兼容RTL
-        if UIView.appearance().semanticContentAttribute == .forceRightToLeft {
-            if ps == .imageLeft {
-                ps = .imageRight
-            }else if ps == .imageRight {
-                ps = .imageLeft
-            }
-        }
         let imageWidth = self.imageView?.image?.size.width ?? 0
         let imageHeight = self.imageView?.image?.size.height ?? 0
         let txtStr = NSString.init(string: self.titleLabel?.text ?? "")
@@ -150,19 +141,21 @@ private var rightKey: UInt8 = 0
         let changedWidth = labelWidth + imageWidth - tempWidth
         let tempHeight = max(labelHeight, imageHeight)
         let changedHeight = labelHeight + imageHeight + spacing - tempHeight
-        
-        switch (ps) {
+        ///兼容rtl
+        let isRtl = UIView.appearance().semanticContentAttribute == .forceRightToLeft
+        switch (postion) {
         case .imageLeft:
-            self.imageEdgeInsets = UIEdgeInsets.init(top: 0,left: -spacing / 2,bottom : 0,right: spacing / 2)
-                self.titleEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2, bottom :0,right:  -spacing / 2);
-                self.contentEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2,bottom : 0,right:  spacing / 2);
-                
+            self.imageEdgeInsets = UIEdgeInsets.init(top: 0,left: isRtl ? spacing / 2 : -spacing / 2,bottom : 0,right: isRtl ? -spacing / 2 : spacing / 2)
+            self.titleEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? -spacing / 2 :  spacing / 2, bottom :0,right: isRtl ? spacing / 2 : -spacing / 2)
+                self.contentEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2,bottom : 0,right:  spacing / 2)
+            
             case .imageRight:
-                self.imageEdgeInsets = UIEdgeInsets.init(top:0,left:  labelWidth + spacing / 2,bottom : 0,right:  -(labelWidth + spacing / 2));
-                self.titleEdgeInsets = UIEdgeInsets.init(top:0,left:  -(imageWidth + spacing / 2),bottom : 0, right: imageWidth + spacing / 2);
-                self.contentEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2,bottom : 0,right:  spacing / 2);
-                
-        case .imageTop:
+
+            self.imageEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? -(labelWidth + spacing / 2) : labelWidth + spacing / 2,bottom : 0,right: isRtl ? (labelWidth + spacing / 2) : -(labelWidth + spacing / 2))
+            self.titleEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? imageWidth + spacing / 2 : -(imageWidth + spacing / 2),bottom : 0, right: isRtl ? -(imageWidth + spacing / 2) : imageWidth + spacing / 2)
+                self.contentEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2,bottom : 0,right:  spacing / 2)
+            
+             case .imageTop:
                 self.imageEdgeInsets = UIEdgeInsets.init(top:-imageOffsetY,left:  imageOffsetX,bottom : imageOffsetY,right:  -imageOffsetX);
                 self.titleEdgeInsets = UIEdgeInsets.init(top:labelOffsetY,left:  -labelOffsetX,bottom : -labelOffsetY,right:  labelOffsetX);
                 self.contentEdgeInsets = UIEdgeInsets.init(top:imageOffsetY,left:  -changedWidth / 2,bottom : changedHeight - imageOffsetY,right:  -changedWidth / 2);
