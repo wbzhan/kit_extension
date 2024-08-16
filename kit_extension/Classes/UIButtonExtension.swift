@@ -151,8 +151,8 @@ private var rightKey: UInt8 = 0
             
             case .imageRight:
 
-            self.imageEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? -(labelWidth + spacing / 2) : labelWidth + spacing / 2,bottom : 0,right: isRtl ? (labelWidth + spacing / 2) : -(labelWidth + spacing / 2))
-            self.titleEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? imageWidth + spacing / 2 : -(imageWidth + spacing / 2),bottom : 0, right: isRtl ? -(imageWidth + spacing / 2) : imageWidth + spacing / 2)
+            self.imageEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? -(labelWidth + spacing / 2) : (labelWidth + spacing / 2),bottom : 0,right: isRtl ? (labelWidth + spacing / 2) : -(labelWidth + spacing / 2))
+            self.titleEdgeInsets = UIEdgeInsets.init(top:0,left: isRtl ? (imageWidth + spacing / 2) : -(imageWidth + spacing / 2),bottom : 0, right: isRtl ? -(imageWidth + spacing / 2) : (imageWidth + spacing / 2))
                 self.contentEdgeInsets = UIEdgeInsets.init(top:0,left:  spacing / 2,bottom : 0,right:  spacing / 2)
             
              case .imageTop:
