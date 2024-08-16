@@ -58,8 +58,7 @@ public extension String {
     
     ///验证是否为合格邮箱
     func isEmail() -> Bool {
-        let rule = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        
+        let rule = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,7}"
         return self.checkString(rule)
     }
     
