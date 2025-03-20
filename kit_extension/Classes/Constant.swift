@@ -17,9 +17,7 @@ public let kScreenHeight = UIScreen.main.bounds.size.height
 ///nav height
 public let kNavHeight = CGFloat(44.0)
 ///status bar height
-public let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
-///main view height
-public let kMainHeight = kScreenHeight - kNavHeight - kStatusBarHeight
+public let kStatusBarHeight = kit_statusBarFrame().size.height
 ///nav and status bar height
 public let kTopHeight = kNavHeight + kStatusBarHeight
 ///底部高度
@@ -58,7 +56,7 @@ public let kSystemVersion = UIDevice.current.systemVersion
 ///App名称
 public let kAppName = (Bundle.main.infoDictionary!["CFBundleDisplayName"] as? String) ?? ""
 ///udid
-public var kDeviceUDID :String!{
+public var kDeviceIDFA :String!{
     if #available(iOS 14, *) {
         var udid = ""
         ///询问用户是否同意获取IDFA
