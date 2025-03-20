@@ -17,7 +17,7 @@ public let kScreenHeight = UIScreen.main.bounds.size.height
 ///nav height
 public let kNavHeight = CGFloat(44.0)
 ///status bar height
-public let kStatusBarHeight = kit_statusBarFrame().size.height
+public let kStatusBarHeight = KitScreenExtension.statusBarFrame.height
 ///nav and status bar height
 public let kTopHeight = kNavHeight + kStatusBarHeight
 ///底部高度
@@ -71,7 +71,7 @@ public var kDeviceIDFA :String!{
     }
 }
 @available(iOS 11.0, *)//是否为全面屏 -- 使用(UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0 可能判断不准确，当前keywindow随时会变更，页面push或者弹窗的时候某个时序的keyWindow可能为nil
-public let isFullScreenDevice = UIApplication.shared.statusBarFrame.size.height > 21.0
+public let isFullScreenDevice = kStatusBarHeight > 21.0
 ///判断iPhoneX所有系列
 public var iPhoneX_All: Bool! {
     get {

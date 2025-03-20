@@ -319,12 +319,3 @@ public func DLog<T>(_ messsage : T, file : String = #file, funcName : String = #
         print("\(fileName):(\(lineNum))：\(messsage)")
     #endif
 }
-
-public func kit_statusBarFrame() -> CGRect {
-    if #available(iOS 13.0, *) {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
-            return statusBarFrame
-        }
-    }
-    return UIApplication.shared.statusBarFrame
-}

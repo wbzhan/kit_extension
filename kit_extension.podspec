@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'kit_extension'
-  s.version          = '0.4.9'
+  s.version          = '0.4.10'
   s.summary          = 'A common UIKit Extension'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-UIKit 一般扩展内容
+UIKit extension constant functions
                        DESC
 
   s.homepage         = 'https://github.com/wbzhan/kit_extension'
