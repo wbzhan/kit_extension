@@ -1,5 +1,5 @@
 PODS:
-  - kit_extension (0.3.6)
+  - kit_extension (0.4.10)
 
 DEPENDENCIES:
   - kit_extension (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  kit_extension: 82c430876fe2d41e0bf1b61e84967acc9a7f5b5f
+  kit_extension: fb0945fb9e17a139900fa78fcfe507f1f98aedb9
 
 PODFILE CHECKSUM: 0cc457885e1baf08a6351751028670897463af6b
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

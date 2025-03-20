@@ -1,19 +1,19 @@
 {
   "name": "kit_extension",
-  "version": "0.3.6",
+  "version": "0.4.10",
   "summary": "A common UIKit Extension",
-  "description": "UIKit 一般扩展内容",
-  "homepage": "https://github.com/zhanwenbaoit@126.com/kit_extension",
+  "description": "UIKit extension constant functions",
+  "homepage": "https://github.com/wbzhan/kit_extension",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "zhanwenbaoit@126.com": "wbzhan@yeah.net"
+    "Eric": "zhanwenbaoit@126.com"
   },
   "source": {
     "git": "https://github.com/wbzhan/kit_extension.git",
-    "tag": "0.3.6"
+    "tag": "0.4.10"
   },
   "swift_versions": "5.0",
   "platforms": {
