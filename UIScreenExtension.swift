@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct KitScreenExtension {
-    static var keyWindow: UIWindow? {
+public struct KitScreenExtension {
+    public  static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
             let connectedScenes = UIApplication.shared.connectedScenes
             let scene = connectedScenes.first(where: { $0.activationState == .foregroundActive && $0 is UIWindowScene }) ?? connectedScenes.first(where: { $0.activationState == .foregroundInactive && $0 is UIWindowScene })
@@ -20,7 +20,7 @@ struct KitScreenExtension {
         }
     }
     
-    static var statusBarFrame: CGRect {
+    public static var statusBarFrame: CGRect {
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
                 return statusBarFrame
